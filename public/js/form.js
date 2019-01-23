@@ -31,10 +31,6 @@ function inputValues(e) {
   parseZipAddress2 = parseInt(zipAddress2);
   parsePounds = parseFloat(pounds);
   parseOunces = parseFloat(ounces);
-  console.log(parseZipAddress1);
-  console.log(parseZipAddress2);
-  console.log(parsePounds);
-  console.log(parseOunces);
 
   makeRequest();
 
@@ -63,7 +59,6 @@ function makeRequest() {
   );
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
-      console.log(request.responseText);
       xmlData = request.responseText;
       parseXmlData(xmlData);
     } else {
@@ -76,7 +71,42 @@ function makeRequest() {
 function parseXmlData(x) {
   let parser = new DOMParser();
   xml = parser.parseFromString(x, "application/xml");
+  var tempAmount = (xml.getElementsByTagName("Rate")[0].firstChild);
+  console.log(tempAmount.data);
 
-  console.log(xml);
-  console.log(xml.getElementsByTagName("Rate")[0].firstChild);
+  var amountToBePaid= parseFloat(tempAmount.data);
+  console.log(amountToBePaid);
+
+
+  var checkoutHandler = StripeCheckout.configure({
+    key: "pk_test_TYooMQauvdEDq54NiTphI7jx",
+    locale: "auto"
+  });
+  
+  checkoutHandler.open({
+    name: "Radio sheild",
+    description: "Here is the total for your shipping",
+    token: handleToken,
+    amount:amountToBePaid*100
+  });
+
+  function handleToken(token) {
+   fetch("/charge", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(token)
+  })
+  .then(response => {
+    if (!response.ok)
+      throw response;
+    return response.json();
+  })
+  .then(output => {
+    console.log("Purchase succeeded:", output);
+  })
+  .catch(err => {
+    console.log("Purchase failed:", err);
+  })
+  }
+  
 }
