@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="card mt-5 mb-5" style="height:750px;margin-top:50px;">
+        <div class="card-header bg-primary " style="height:45px;padding-top: 15px;border-radius:4px;">
+            <h5 style="color:white; margin-left: 510px;font-weight:700;">Price Calculation</h5>
+        </div>
+        <div class="card-body" style="margin-top: 15px">
+            <!--             
+                
+                <div class="form-control">
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></div>
+                  
+                <div class="form-group ">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                   
+                </div>
+                
+                
+                
+                <button class="btn-block btn btn-info" type="button" >Search</button>
+                </div>
+                
+                
+                -->
+            <form>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Service</label>
+                        <select id="inputState" class="form-control">
+                            <option>FIRST CLASS</option>
+                            <option>PRIORITY EXPRESS</option>
+                            <option>PRIORITY</option>
+                            <option>PARCEL SELECT GROUND</option>
+                            <option>LIBRARY</option>
+                            <option>MEDIA</option>
+                            <option>BPM</option>
+                            <option>PRIORITY MAIL CUBIC</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword">Mail Type</label>
+                        <input type="text" class="form-control" id="InputMailType" placeholder="InputMailType" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress">ZipCodeOrigination</label>
+                        <input type="number" class="form-control" id="inputAddress" placeholder="12345" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress2">ZipCodeDestination</label>
+                        <input type="number" class="form-control" id="inputAddress2" placeholder="12345" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCity">Pounds</label>
+                        <input type="number" class="form-control" id="inputPounds" placeholder="inputPounds" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputOunces">Ounces</label>
+                        <input type="number" class="form-control" id="inputOunces" placeholder="InputOunces" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Size</label>
+                        <select id="inputState" class="form-control">
+                            <option>Big</option>
+                            <option>Small</option>
+                            <option>Large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="button" type="submit" class=" btn btn-block  btn-primary">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <ul id="ServiceType"></ul>
+    <ul id="Rates"></ul>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>

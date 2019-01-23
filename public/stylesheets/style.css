@@ -1,0 +1,44 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container-fluid{
+  padding: 10px;
+}
+
+.navbar{
+  border-radius: 5px;
+  background-color: orange;
+
+}
+
+.btn{
+  color: black;
+  background-color: orange;
+}
+.btn:hover {background-color: grey}
+
+.thumbnail {
+  padding: 15px;
+  background-color: #d3d3d3;
+  border: 1px;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  margin-right: 0px;
+}

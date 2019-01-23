@@ -1,0 +1,17 @@
+<div class="container">
+    {{# each customers }}
+        <div id="customers" class="row ">
+            {{# each this }}
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                          <h3>{{this.fisrtName}}</h3>
+                          <h3>{{this.lastName}}</h3>
+                          <h3>{{this.userName}}</h3>
+                          <h3>{{this.email}}</h3>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
+</div>
