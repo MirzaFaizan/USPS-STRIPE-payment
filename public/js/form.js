@@ -1,5 +1,4 @@
-(function(window) {
-  var btn = document.getElementById("button");
+var btn = document.getElementById("button");
   btn.addEventListener("click", inputValues, makeRequest);
   let serviceType = "";
   let mailType = "";
@@ -42,6 +41,7 @@
     e.preventDefault();
   }
 
+
   function makeRequest() {
     const Http = new XMLHttpRequest();
     //  const url = `http://production.shippingapis.com/ShippingAPI.dll?API=RateV4&XML=<RateV4Request USERID="945RADIO3150"><Revision>2</Revision><Package ID="1ST"><Service>"${serviceType}"</Service><FirstClassMailType>"${mailType}"</FirstClassMailType><ZipOrigination>${parseZipAddress1}</ZipOrigination><ZipDestination>${parseZipAddress2}</ZipDestination<Pounds>${parsePounds}</Pounds><Ounces>${parseOunces}</Ounces><Container/><Size>"${size}"</Size><Machinable>true</Machinable></Package></RateV4Request>`;
@@ -52,6 +52,7 @@
     Http.onreadystatechange = e => {
       xmlData = Http.responseText;
 
+      
       parseXmlData(xmlData);
     };
   }
@@ -60,5 +61,3 @@
     xml = parser.parseFromString(x, "application/xml");
     console.log(xml);
   }
-  window.Form = Form;
-})(window);
