@@ -1,9 +1,14 @@
+const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+
+var stripe = require("stripe")(keySecret);
 var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 let db = mongoose.connection;
 var multer = require("multer");
+
 
 // create application/json parser
 var jsonParser = bodyParser.json();
@@ -62,6 +67,30 @@ router.get("/customerList", function(req, res, next) {
 router.get("/form", function(req, res, next) {
   res.render("form", { title: "form" });
 });
+
+//  GET a request from Stripe API
+
+router.post("/charge", (req, res) => {
+  let amount = 500;
+
+  stripe.customers.create({
+    email: req.body.email,
+    card: req.body.id
+  })
+  .then(customer =>
+    stripe.charges.create({
+      amount,
+      description: "Sample Charge",
+      currency: "usd",
+      customer: customer.id
+    }))
+  .then(charge => res.send(charge))
+  .catch(err => {
+    console.log("Error:", err);
+    res.status(500).send({error: "Purchase Failed"});
+  });
+});
+
 
 //POST to datatbase GOOD CODE
 router.post("/addCustomer", function(req, res) {

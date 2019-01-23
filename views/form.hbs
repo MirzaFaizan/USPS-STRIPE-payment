@@ -61,6 +61,11 @@
                 </button>
 
         </div>
+
+
+    <div id="shop">
+      <button id="buttonCheckout">Checkout</button>
+    </div>
     </div>
 
     <ul id="ServiceType"></ul>
@@ -74,4 +79,41 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
 <script src="js/form.js"></script>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+  <script>
+      var checkoutHandler = StripeCheckout.configure({
+  key: "pk_test_TYooMQauvdEDq54NiTphI7jx",
+  locale: "auto"
+});
+
+    var button = document.getElementById("buttonCheckout");
+button.addEventListener("click", function(ev) {
+  checkoutHandler.open({
+    name: "Sample Store",
+    description: "Example Purchase",
+    token: handleToken
+  });
+});
+function handleToken(token) {
+ fetch("/charge", {
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify(token)
+})
+.then(response => {
+  if (!response.ok)
+    throw response;
+  return response.json();
+})
+.then(output => {
+  console.log("Purchase succeeded:", output);
+})
+.catch(err => {
+  console.log("Purchase failed:", err);
+})
+}
+
+  </script>
+
 </body>
